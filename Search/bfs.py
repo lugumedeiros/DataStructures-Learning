@@ -1,3 +1,8 @@
+# bfs_search_bad: A basic implementation of BFS using custom logic, no queue.
+# bfs_search: A cleaner, correct implementation of BFS using FIFO queue (deque).
+# Both search for an item in a graph and report the distance from the start node.
+
+
 from collections import deque
 
 def bfs_search_bad(graph, start_search, item_search):
@@ -38,3 +43,21 @@ def bfs_search(graph, start_search, item_search):
             for subkey in graph[key]:
                 if not subkey in invalid_keys:
                     fifo.append((subkey, degree + 1))
+
+
+if __name__ == "__main__":
+    # Example graph: adjacency list
+    graph = {
+        'A': ['B', 'C'],
+        'B': ['A', 'D', 'E'],
+        'C': ['A', 'F'],
+        'D': ['B'],
+        'E': ['B', 'F'],
+        'F': ['C', 'E']
+    }
+
+    start = 'A'
+    target = 'F'
+    
+    # Running the correct BFS search
+    bfs_search(graph, start, target)

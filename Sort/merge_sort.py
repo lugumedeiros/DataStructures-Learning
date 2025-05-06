@@ -1,3 +1,6 @@
+# merge_sort: Implements the Merge Sort algorithm to sort a list in ascending order.
+
+
 def merge_sort(lst):
         """Θ(nlogn), Has recursion"""
         def sort(lst_a, lst_b):
@@ -22,3 +25,10 @@ def merge_sort(lst):
             lst_a = lst[: lst_size//2]
             lst_b = lst[lst_size//2 :]
             return sort(merge_sort(lst_a), merge_sort(lst_b))
+
+
+if __name__ == "__main__":
+    lst = [12, 11, 13, 5, 6, 7]
+    
+    sorted_lst = merge_sort(lst)
+    print("Sorted list:", sorted_lst)

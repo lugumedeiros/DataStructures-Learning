@@ -1,3 +1,7 @@
+# A basic hash table using lists and a naive hash function, with support for insert, delete, and duplicate detection.
+# Uses chaining (lists) to handle collisions and a Count-Min Sketch (with 3 simple hash functions) to approximate counts.
+# Designed for learning purposes with intentionally poor hash functions to explore behavior and limitations.
+
 class Hash:
     class CountMinSketch():
         # Count Min with 3 terrible hash funtions...
@@ -72,3 +76,25 @@ class Hash:
     # Terrible :D
     def bad_hash_func(self, number):
         return (3 * number * number) + (number * 9)
+    
+if __name__ == "__main__":
+
+    # Create hash table with 10 slots
+    h = Hash(10)
+
+    # Insert values
+    h.insert(5)
+    h.insert(14)
+    h.insert(5)  # Duplicate, will be ignored in hash table but counted again in Count-Min Sketch
+    h.insert(15)
+    print(h.hash)
+
+    # Delete value
+    h.delete(14)
+
+    # Check estimated count (frequency) of a number
+    print("Estimated count of 5:", h.check_count(5))
+    print("Estimated count of 14:", h.check_count(14)) 
+
+    # Directly inspect the hash table
+    print(h.hash)  # May show 5 stored, but not 14 anymore

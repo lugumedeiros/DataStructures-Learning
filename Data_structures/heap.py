@@ -1,3 +1,9 @@
+# - Max_heap: max-oriented binary heap (largest at root)
+# - Min_heap: min-oriented binary heap (smallest at root)
+# - MedianHeap: maintains median using one max-heap and one min-heap
+
+# Supports insert, delete, pop, heapsort, and peek (for median).
+
 class Heap:
     @staticmethod
 
@@ -224,3 +230,28 @@ class Heap:
         def insert(self, value):
             self.max_heap.insert(value)
             self._sort_and_split()
+
+if __name__ == "__main__":
+    print("=== Max Heap Example ===")
+    maxh = Heap.Max_heap([3, 10, 5, 6, 2])
+    print("Initial max heap:", maxh.heap)
+    maxh.insert(12)
+    print("After inserting 12:", maxh.heap)
+    print("Pop max:", maxh.pop())
+    print("After pop:", maxh.heap)
+
+    print("\n=== Min Heap Example ===")
+    minh = Heap.Min_heap([8, 4, 7, 1, 3])
+    print("Initial min heap:", minh.heap)
+    minh.insert(0)
+    print("After inserting 0:", minh.heap)
+    print("Pop min:", minh.pop())
+    print("After pop:", minh.heap)
+
+    print("\n=== Median Heap Example ===")
+    med = Heap.MedianHeap([5, 2, 9, 1, 8])
+    print("Initial median:", med.peek())
+    med.insert(4)
+    print("Median after inserting 4:", med.peek())
+    med.insert(15)
+    print("Median after inserting 15:", med.peek())

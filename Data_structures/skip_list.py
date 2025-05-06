@@ -1,3 +1,8 @@
+# SkipList: probabilistic sorted linked list for fast insert/search/delete (avg O(log n))
+# Uses multiple layers of linked lists with coin-flip height randomization
+# Supports insert, delete, and view all levels
+
+
 import random
 
 class _skipListNode:
@@ -64,3 +69,23 @@ class SkipList:
                 node = node.pointer[i]
             main_list.append(level_list)
         return main_list
+    
+if __name__ == "__main__":
+    print("=== SkipList Example ===")
+    sl = SkipList()
+
+    print("Inserting values: from 0 to 20")
+    for i in range(20):
+        sl.insert(i)
+
+    print("Levels after insertions:")
+    for i, level in enumerate(sl.get_all()[::-1]):
+        print(f"Level {i}: {level}")
+
+    print("\nDeleting evens")
+    for i in range(10):
+        sl.delete(i*2)
+
+    print("Levels after deletion:")
+    for i, level in enumerate(sl.get_all()[::-1]):
+        print(f"Level {i}: {level}")

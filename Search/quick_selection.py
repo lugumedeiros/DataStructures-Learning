@@ -1,3 +1,6 @@
+# quick_selection: A selection algorithm that finds the k-th smallest element in an unsorted list using the QuickSort partitioning method.
+
+
 import random
 
 def _swap(x, y, lst):
@@ -26,3 +29,12 @@ def quick_selection(lst, position):
     else:
         new_pos = position - (1 + len(left))
         return quick_selection(right, new_pos)
+    
+
+if __name__ == "__main__":
+    lst = [10, 4, 5, 8, 6, 11, 26]
+    position = 3  # Find the 3rd smallest element
+
+    result = quick_selection(lst, position)
+    
+    print(f"The {position+1}-th smallest element is {result}")

@@ -1,3 +1,7 @@
+# quicksort: Functional (non-in-place) implementation of QuickSort using recursion.
+# inplace_quicksort: In-place recursive implementation of QuickSort using random pivot.
+
+
 import random
 
 def _swap(x, y, lst):
@@ -40,3 +44,11 @@ def inplace_quicksort(lst, origin=None, end=None):
         if end - greater > 0:
             inplace_quicksort(lst, greater, end)
         return lst
+
+
+if __name__ == "__main__":
+    lst1 = [10, 7, 8, 9, 1, 5]
+    lst2 = lst1.copy()
+
+    print("Sorted (quicksort):", quicksort(lst1))
+    print("Sorted (inplace_quicksort):", inplace_quicksort(lst2))

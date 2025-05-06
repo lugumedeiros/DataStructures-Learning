@@ -1,3 +1,7 @@
+# A simple Binary Search Tree (BST) where each node holds a value and has left/right children.
+# Values are inserted recursively: smaller to the left, greater to the right.
+# Supports insertion, deletion (via subtree replacement), height calculation, and full tree traversal.
+
 class BinarySearchTree:
     def __init__(self, root=None):
         self.root = root
@@ -104,3 +108,31 @@ class BinarySearchTree:
         left_str = '' if self.left is None else self.left.get_tree()
         right_str = '' if self.right is None else self.right.get_tree()
         return f"{self.root} [{left_str}, {right_str}]"
+
+if __name__ == "__main__":
+    # Create an empty tree
+    tree = BinarySearchTree()
+
+    # Insert values
+    tree.insert(10)
+    tree.insert(5)
+    tree.insert(15)
+    tree.insert(3)
+    tree.insert(7)
+    tree.insert(12)
+    tree.insert(18)
+
+    # Print full tree structure
+    print("Tree:", tree.get_tree())  
+    # Output format: root [left_subtree, right_subtree]
+
+    # Get tree height
+    print("Height:", tree.height())  # Should reflect depth of the deepest side
+
+    # Get leftmost (minimum) and rightmost (maximum) values
+    print("Leftmost (min):", tree.get_left())    # 3
+    print("Rightmost (max):", tree.get_right())  # 18
+
+    # Delete a value and print tree again
+    tree.delete(15)
+    print("Tree after deleting 15:", tree.get_tree())

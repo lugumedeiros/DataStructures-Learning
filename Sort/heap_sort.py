@@ -1,3 +1,5 @@
+# lazy
+
 from Data_structures.heap import Heap
 def heap_sort(array):
     """Θ(nlogn), Space Θ(1), Has recursion"""

@@ -1,3 +1,7 @@
+# dijkstra: A correct implementation of Dijkstra's algorithm using heapq for efficient priority queue management.
+# It returns the shortest distances from the starting node to all other nodes in the graph.
+
+
 from collections import deque
 import heapq
 
@@ -85,3 +89,17 @@ def dijkstra(graph, start):
                 heapq.heappush(to_visit, (sub_dist, sub_node))
 
     return map_dist
+
+
+if __name__ == "__main__":
+    graph = {
+        'A': [('B', 1), ('C', 4)],
+        'B': [('A', 1), ('C', 2), ('D', 5)],
+        'C': [('A', 4), ('B', 2), ('D', 1)],
+        'D': [('B', 5), ('C', 1)]
+    }
+    start = 'A'
+    
+    result = dijkstra(graph, start)
+    
+    print("Shortest distances:", result)
