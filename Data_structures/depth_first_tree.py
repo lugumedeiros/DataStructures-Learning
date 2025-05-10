@@ -83,7 +83,7 @@ class DFT:
         print(f"Forward edges: ", self.forward)
         print(f"Backward edges: ", self.backward)
         print(f"Cross edges: ", self.cross)
-        print(f"Topological Sort: ", self.topological_sort)
+        print(f"Topological Sort: ", self.topological_sort())
     def classify_edges(self):
         self.forward = []
         self.backward = []
