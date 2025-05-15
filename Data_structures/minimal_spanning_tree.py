@@ -1,5 +1,7 @@
-def prisms_method(tree:dict):
-    def get_smallest_edge(edge_list, ban_list=None):
+import heapq
+
+def prisms_method(tree:dict) -> list:
+    def get_smallest_edge(edge_list, ban_list=None) -> tuple:
         temp_node = ''
         temp_weight = float("inf")
         for path_node, weight in edge_list:
@@ -44,6 +46,42 @@ def prisms_method(tree:dict):
     
     return mst
 
+def kruskals_method(tree:dict) -> list:
+    def get_weight(path):
+        _, _, weight = path
+        return weight
+    
+    nodes_n = len(tree)
+
+    # Clear duplicated paths
+    unique_set_edges = set([])
+    for key_node, edge_list in tree.items():
+        for edge in edge_list:
+            edge_node, weight = edge
+            if (edge_node, key_node, weight) in unique_set_edges:
+                continue
+            new_unique = (key_node, edge_node, weight)
+            unique_set_edges.add(new_unique)
+    
+    # Sort paths in ascending order
+    unique_list_edges = [x for x in unique_set_edges]
+    unique_list_edges = sorted(unique_list_edges, key=get_weight)
+    
+    # Add paths to mst
+    nodes_placed = set([])
+    mst = []
+    for path in unique_list_edges:
+        a_node, b_node, weight = path
+        if a_node in nodes_placed and b_node in nodes_placed:
+            continue
+        mst.append(path)
+
+        # break earlier
+        if len(mst) >= (nodes_n-1):
+            break
+
+    return mst
+
 
 if __name__ == "__main__":
     graph = {
@@ -56,4 +94,5 @@ if __name__ == "__main__":
     'G': [('C', 6), ('F', 1)]
 }
     print(prisms_method(graph))
+    print(kruskals_method(graph))
     
