@@ -49,23 +49,22 @@ class DisjointTree:
             b_node.children.add(a_node)
             a_node.parent = b_node
         
+if __name__ == "__main__":
 
+    tree = [1, 3, 23, 12, 0 , 7]
+    ref = 3
+    dsf = DisjointTree((tree, ref))
+    ntree = [2, 14, 32, 45]
+    nref = 2
+    dsf.make_tree((ntree, nref))
 
-tree = [1, 3, 23, 12, 0 , 7]
-ref = 3
-dsf = DisjointTree((tree, ref))
-ntree = [2, 14, 32, 45]
-nref = 2
-dsf.make_tree((ntree, nref))
+    x, _ = dsf.find(23)
+    y, _ = dsf.find(32)
 
-x, _ = dsf.find(23)
-y, _ = dsf.find(32)
+    print(f"Root trees: A={x.key}, B={y.key}")
 
-print(f"Root trees: A={x.key}, B={y.key}")
+    dsf.union(23, 32)
+    x, _ = dsf.find(23)
+    y, _ = dsf.find(32)
 
-dsf.union(23, 32)
-x, _ = dsf.find(23)
-y, _ = dsf.find(32)
-
-print(f"Root trees: A={x.key}, B={y.key}")
-pass
+    print(f"Root trees: A={x.key}, B={y.key}")
